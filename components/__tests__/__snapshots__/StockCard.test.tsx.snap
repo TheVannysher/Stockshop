@@ -1,0 +1,287 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#fff",
+        "borderRadius": 8,
+        "borderTopColor": "#2f95dc",
+        "borderTopWidth": 4,
+        "padding": 10,
+        "shadowColor": "#000",
+        "shadowOffset": {
+          "height": 10,
+          "width": 0,
+        },
+        "shadowOpacity": 0.25,
+        "shadowRadius": 10,
+      },
+      {
+        "borderTopColor": "#2f95dc",
+      },
+    ]
+  }
+>
+  <View>
+    <View
+      style={
+        {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#000",
+            },
+            {
+              "fontSize": 20,
+              "fontWeight": "bold",
+            },
+          ]
+        }
+      >
+        AAPL
+      </Text>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "gap": 2,
+          }
+        }
+      />
+    </View>
+  </View>
+  <View
+    style={
+      {
+        "overflow": "hidden",
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "marginBottom": 10,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          }
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "color": "#000",
+              },
+              undefined,
+            ]
+          }
+        >
+          buy price:
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "color": "#000",
+              },
+              undefined,
+            ]
+          }
+        >
+          100.00
+          $
+        </Text>
+      </View>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          }
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "color": "#000",
+              },
+              undefined,
+            ]
+          }
+        >
+          sell price:
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "color": "#000",
+              },
+              undefined,
+            ]
+          }
+        >
+          100.00
+          $
+        </Text>
+      </View>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          }
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "color": "#000",
+              },
+              undefined,
+            ]
+          }
+        >
+          date:
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "color": "#000",
+              },
+              undefined,
+            ]
+          }
+        >
+          3/11/2024
+        </Text>
+      </View>
+      <Text
+        style={
+          [
+            {
+              "color": "#000",
+            },
+            {
+              "fontWeight": "bold",
+              "padding": 5,
+            },
+          ]
+        }
+      >
+        Mentions:
+      </Text>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          }
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "color": "#000",
+              },
+              undefined,
+            ]
+          }
+        >
+          twitter
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "color": "#000",
+              },
+              undefined,
+            ]
+          }
+        >
+          540
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        {
+          "flexDirection": "row",
+          "gap": 5,
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "gap": 5,
+            "padding": 5,
+          }
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "color": "#000",
+              },
+              undefined,
+            ]
+          }
+        >
+          Recommandation:
+        </Text>
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "borderRadius": 100,
+                "justifyContent": "center",
+                "padding": 5,
+              },
+              {
+                "backgroundColor": "#3EC300",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              {
+                "color": "white",
+                "fontWeight": "bold",
+                "textTransform": "uppercase",
+              }
+            }
+          >
+            buy
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

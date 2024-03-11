@@ -1,18 +1,18 @@
+export type SocialMediaCount = {
+  type: string,
+  count: number,
+}
+
 export type Stock = {
   symbol: string;
   buyPrice: number;
   sellPrice: number;
-  quantity: number;
+  socialMedia?: SocialMediaCount[]
+  date: Date;
 }
 
-export type Holding = {
-  stock: Stock;
-  purchaseDate: Date;
-}
-
-export type Portfolio = {
-  holdings: Holding[];
-  totalValue?: number;
-  totalGain?: number;
-  unrealizedGain?: number;
+export interface Order {
+  type: 'sell' | 'buy',
+  stock: Stock,
+  quantity: number,
 }

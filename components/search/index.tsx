@@ -4,6 +4,7 @@ import style from './styles';
 import { useColorScheme } from '../useColorScheme';
 import { TextInput, TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
+import Colors from '@/constants/Colors';
 
 export interface SearchProps {
   initialValue?: string,
@@ -26,9 +27,9 @@ export default function Search(props: SearchProps) {
 
   return (
     <View style={styles.container}>
-      <TextInput value={input} onChange={(event) => {
-        onChange(event.nativeEvent.text);
-        setInput(event.nativeEvent.text);
+      <TextInput placeholderTextColor={Colors[theme].tabIconDefault} value={input} onChangeText={(text) => {
+        onChange(text);
+        setInput(text);
       }} style={styles.input} placeholder='Search symbol...'></TextInput>
       {displaySubmitbutton && (
         <TouchableOpacity onPress={() => onSubmit(input)}>

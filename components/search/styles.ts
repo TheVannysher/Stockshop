@@ -1,5 +1,4 @@
 import Colors from "@/constants/Colors"
-import { Theme } from "@react-navigation/native"
 import { StyleSheet } from "react-native"
 
 export default function style(theme: 'light' | 'dark') {
@@ -11,6 +10,7 @@ export default function style(theme: 'light' | 'dark') {
       backgroundColor: Colors[theme].secondaryBackground,
     },
     input: {
+      color: Colors[theme].text,
       flex: 1,
       padding: 5,
       fontSize: 14,
