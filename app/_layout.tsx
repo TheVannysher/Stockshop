@@ -7,6 +7,7 @@ import React, { useEffect } from 'react';
 
 import { useColorScheme } from '@/components/useColorScheme';
 import ProfileProvider from '@/lib/providers/profile/ProfileProvider';
+import { Routes } from '@/constants/routes';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -15,7 +16,7 @@ export {
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)',
+  initialRouteName: Routes.OVERVIEW,
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -52,7 +53,7 @@ function RootLayoutNav() {
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <ProfileProvider>
         <Stack>
-          <Stack.Screen name="overview" options={{ headerShown: false }} />
+          <Stack.Screen name={Routes.OVERVIEW} options={{ headerShown: false }} />
         </Stack>
       </ProfileProvider>
     </ThemeProvider>
