@@ -1,24 +1,28 @@
-import { ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet, useColorScheme } from 'react-native';
 
 import { Text, View } from '@/components/Themed';
 import Search from '@/components/search';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { Stock } from '@/lib/types/stock';
 import getStock from '@/lib/mock/getStock';
 import getRecommended from '@/lib/helpers/getRecommended';
 import StockCard from '@/components/StockCard';
-import { Picker } from '@react-native-picker/picker';
-import Colors from '@/constants/Colors';
 import TimeWindow from '@/constants/timeWindow';
+import SocialMediaContext from '@/lib/contexts/socialMedia';
+import Colors from '@/constants/Colors';
+import { Picker } from '@react-native-picker/picker';
 
 export default function OverviewSrceen() {
   const [error, setError] = useState<string>('');
   const [stocks, setStocks] = useState<Stock[]>([]);
   const [timeWindow, setTimeWindow] = useState<number>(TimeWindow.DAY_10.value);
   const [socialMedia, setSocialMedia] = useState<string>('instagram');
+  const theme = useColorScheme() ?? 'light';
+
+  const { socials } = useContext(SocialMediaContext);
 
   const onChange = useCallback((input: string) => {
-    const result = getStock(input, new Date(Date.now() - timeWindow), socialMedia);
+    const result = getStock(input, new Date(Date.now() + timeWindow), socialMedia);
     if (result) {
       setStocks(result);
       setError('');
@@ -26,32 +30,42 @@ export default function OverviewSrceen() {
       setStocks([])
       setError('Stock not found');
     }
-  }, [])
+  }, [socialMedia, timeWindow])
+
+  const pickerColorStyle = useMemo(() => ({
+    backgroundColor: Colors[theme].secondaryBackground,
+    color: Colors[theme].text,
+  }), [theme]);
+
+  useEffect(() => {
+    const result = getStock('', new Date(Date.now() - timeWindow), socialMedia);
+    if (result) setStocks(result);
+  }, [timeWindow, socialMedia]);
 
 
   return (
     <View style={styles.container}>
       <Search onChange={onChange} />
       <Picker
-        style={styles.picker}
+        style={pickerColorStyle}
         selectedValue={timeWindow}
         onValueChange={(itemValue) =>
           setTimeWindow(itemValue)
         }>
         {Object.values(TimeWindow).map(({ label, value }) => (
-          <Picker.Item label={label} value={value} />
+          <Picker.Item key={value} label={label} value={value} />
         ))}
       </Picker>
       <Picker
-        style={styles.picker}
+        style={pickerColorStyle}
         selectedValue={socialMedia}
         onValueChange={(itemValue) =>
           setSocialMedia(itemValue)
         }
       >
-        <Picker.Item label="instagram" value="instagram" />
-        <Picker.Item label="facebook" value="facebook" />
-        <Picker.Item label="Twitter" value="twitter" />
+        {socials.map((social) => (
+          <Picker.Item key={social} label={social} value={social} />
+        ))}
       </Picker>
       {error && (
         <View style={styles.centered}>
@@ -93,10 +107,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 5,
     gap: 10,
-  },
-  picker: {
-    backgroundColor: Colors.dark.secondaryBackground,
-    color: Colors.dark.text,
   },
   title: {
     fontSize: 20,

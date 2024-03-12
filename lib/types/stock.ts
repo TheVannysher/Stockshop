@@ -5,7 +5,9 @@ export type SocialMediaCount = {
 
 export type Stock = {
   symbol: string;
+  // average buying price from buying positions in the order book
   buyPrice: number;
+  // average selling price from selling positions in the order book
   sellPrice: number;
   socialMedia?: SocialMediaCount[]
   date: Date;

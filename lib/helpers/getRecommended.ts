@@ -1,23 +1,45 @@
 import { Stock } from "../types/stock";
 
-const TOLERANCE = 0.003;
+// 
+export const BASE_TOLERANCE = 0.03;
+export const MAX_SENTIMENT_MULTIPLIER = 2.5;
+export const MIN_SENTIMENT_MULTIPLIER = 1;
+export const SENTIMENT_TOLERANCE = 1000;
 
+// This function would need to use more complex tools (like indicators) and calculation
+// to do a real recommendation
+// For the purpose of this exercise
+// I just picked arbitrary numbers
+// and compared the values together with a Tolerance to get a range of prices where
+// recommendation is hold
+// sellPrice = average selling price from selling positions in the order book
+// buyPrice = average buying price from buying positions in the order book
+// 
+// this algorithm follows the trend
 export default function getRecommended(stock: Stock): 'buy' | 'sell' | 'hold' {
-  if (stock.socialMedia) {
-    const total = stock.socialMedia.reduce((acc, curr) => acc + curr.count, 0);
-    const average = total / stock.socialMedia.length;
-    if (average > 500 && stock.buyPrice * (1 - TOLERANCE) > stock.sellPrice) {
-      return 'buy';
-    } else if (average > 500 && stock.buyPrice * (1 - TOLERANCE) > stock.sellPrice) {
-      return 'sell';
-    } else if (average < 100 && stock.sellPrice * (1 - TOLERANCE) > stock.buyPrice) {
-      return 'sell';
-    } else {
-      return 'hold';
-    }
-  } else {
-    if (stock.buyPrice * (1 - TOLERANCE) > stock.sellPrice) return 'buy';
-    if (stock.sellPrice * (1 - TOLERANCE) > stock.buyPrice) return 'sell';
-    return 'hold';
+  const { buyPrice, sellPrice, socialMedia } = stock;
+  let sentimentMultiplier = 1;
+  if (socialMedia) {
+    const result = socialMedia.reduce((acc, social) => acc + social.count, 0) / SENTIMENT_TOLERANCE;
+    sentimentMultiplier = result > 1 ? Math.min(result, MAX_SENTIMENT_MULTIPLIER) : MIN_SENTIMENT_MULTIPLIER;
   }
+  const difference = buyPrice - sellPrice;
+  // the more the peolple are talking about it the more we follow the trend
+  const tolerance = BASE_TOLERANCE / sentimentMultiplier;
+  // more buying than selling
+  if (difference > 0) {
+    const differenceProportion = difference / buyPrice;
+    if (differenceProportion > tolerance) {
+      return 'buy';
+    }
+  }
+  // more selling than buying
+  if (difference < 0) {
+    const differenceProportion = Math.abs(difference / sellPrice);
+    if (differenceProportion > tolerance) {
+      return 'sell';
+    }
+  }
+
+  return 'hold';
 }

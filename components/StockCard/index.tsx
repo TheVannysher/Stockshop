@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Text } from '../Themed';
 import Badge from '../badge';
@@ -24,22 +24,28 @@ export default function StockCard(props: StockCardProps) {
     socials,
   } = props;
 
+  const price = useMemo(() => {
+    return `${parseFloat(((buyPrice + sellPrice) / 2).toString()).toFixed(2)}$`;
+  }, [buyPrice, sellPrice]);
+
   return (
     <Card
       title={symbol}
+      badge={
+        <View style={styles.entry}>
+          <Text style={styles.socialTitle}>current price: </Text>
+          <Badge title={price} />
+        </View>
+      }
     >
       <View style={{ marginBottom: 10 }}>
         <View style={styles.entry}>
-          <Text>buy price:</Text>
+          <Text>ask:</Text>
           <Text>{parseFloat(buyPrice.toString()).toFixed(2)}$</Text>
         </View>
         <View style={styles.entry}>
-          <Text>sell price:</Text>
+          <Text>bid:</Text>
           <Text>{parseFloat(sellPrice.toString()).toFixed(2)}$</Text>
-        </View>
-        <View style={styles.entry}>
-          <Text>date:</Text>
-          <Text>{date.toLocaleDateString()}</Text>
         </View>
         {socials && (
           <Text style={styles.socialTitle}>Mentions:</Text>
@@ -53,6 +59,7 @@ export default function StockCard(props: StockCardProps) {
       </View>
       <View style={{
         flexDirection: 'row',
+        alignItems: 'center',
         justifyContent: 'space-between',
         gap: 5,
       }}>
@@ -61,6 +68,10 @@ export default function StockCard(props: StockCardProps) {
           {recommandation === 'buy' && <Badge title="buy" color="#3EC300" />}
           {recommandation === 'sell' && <Badge title="sell" color="#E13700" />}
           {recommandation === 'hold' && <Badge title="hold" />}
+        </View>
+        <View style={styles.entry}>
+          <Text>on: </Text>
+          <Text>{date.toLocaleDateString()}</Text>
         </View>
       </View>
     </Card>

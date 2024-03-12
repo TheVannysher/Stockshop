@@ -30,3 +30,30 @@ it(`renders correctly`, () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+it(`renders correctly`, () => {
+  const stock: Stock = {
+    symbol: 'WWWWWWWWWWWWWWWWWW',
+    buyPrice: 10000,
+    sellPrice: 1000000,
+    date: new Date(),
+    socialMedia: [
+      {
+        type: 'WWWWWWWWW',
+        count: 54000000,
+      }
+    ]
+  }
+  const tree = renderer.create(
+    <StockCard
+      symbol={stock.symbol}
+      buyPrice={stock.buyPrice}
+      date={stock.date}
+      sellPrice={stock.sellPrice}
+      recommandation={'buy'}
+      socials={stock.socialMedia}
+    />
+  ).toJSON();
+
+  expect(tree).toMatchSnapshot();
+});

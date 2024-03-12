@@ -7,6 +7,15 @@ import { Text as DefaultText, View as DefaultView } from 'react-native';
 
 import Colors from '@/constants/Colors';
 import { useColorScheme } from './useColorScheme';
+import { Picker as DefaultPicker, PickerProps as DefaultPickerProps } from '@react-native-picker/picker';
+
+/*
+  I left this generated file has is since I did not want to lose time on it 
+  and I used it to help me with the theming of the app.
+
+  unfortunatley I did not used it as much as I wanted to since
+  there was not that many pages to create
+*/
 
 type ThemeProps = {
   lightColor?: string;
@@ -15,6 +24,7 @@ type ThemeProps = {
 
 export type TextProps = ThemeProps & DefaultText['props'];
 export type ViewProps = ThemeProps & DefaultView['props'];
+export type PickerProps = ThemeProps & DefaultPickerProps;
 
 export function useThemeColor(
   props: { light?: string; dark?: string },

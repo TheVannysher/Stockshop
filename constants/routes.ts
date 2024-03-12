@@ -1,3 +1,4 @@
-export enum Routes {
-  OVERVIEW = 'overview',
+export enum RoutesNames {
+  OVERVIEW = '(overview)',
+  SETTINGS = 'settings',
 }
