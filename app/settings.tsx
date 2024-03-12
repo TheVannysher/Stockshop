@@ -23,7 +23,6 @@ export default function SettingScreen() {
     if (socials.includes(input) || input === '' || !input.match(/[^a-zA-Z0-9]/)) {
       setInvalid(true);
     }
-    console.log('state', socialMedia);
   }, [socialMedia, socials]);
 
   return (

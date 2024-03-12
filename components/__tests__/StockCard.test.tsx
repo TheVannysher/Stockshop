@@ -19,12 +19,8 @@ it(`renders correctly`, () => {
   }
   const tree = renderer.create(
     <StockCard
-      symbol={stock.symbol}
-      buyPrice={stock.buyPrice}
-      date={stock.date}
-      sellPrice={stock.sellPrice}
-      recommandation={'buy'}
-      socials={stock.socialMedia}
+      stock={stock}
+      socialMediaSelected='twitter'
     />
   ).toJSON();
 
@@ -46,12 +42,8 @@ it(`renders correctly`, () => {
   }
   const tree = renderer.create(
     <StockCard
-      symbol={stock.symbol}
-      buyPrice={stock.buyPrice}
-      date={stock.date}
-      sellPrice={stock.sellPrice}
-      recommandation={'buy'}
-      socials={stock.socialMedia}
+      stock={stock}
+      socialMediaSelected='WWWWWWWWW'
     />
   ).toJSON();
 

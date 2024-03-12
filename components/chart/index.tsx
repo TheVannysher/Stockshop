@@ -17,8 +17,6 @@ export default function Chart({ data }: ChartProps) {
   const labels = useMemo(() => {
     return data.map((stock) => stock.date.toLocaleDateString()).splice(0, 5).reverse();
   }, [data]);
-  console.log('dataSets ', datasets);
-  console.log('labels: ', labels);
   if (data.length === 0 || datasets[0].data.length === 0) return null;
   return (
     <LineChart
