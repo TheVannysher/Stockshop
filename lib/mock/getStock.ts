@@ -28,7 +28,7 @@ export function generateRandomDate(from: Date, to: Date) {
   );
 }
 
-function generateRandomStockValue(stock: string, date: Date, socialMedia: string[]) {
+export function generateRandomStockValue(stock: string, date: Date, socialMedia: string[]) {
   return {
     symbol: stock,
     buyPrice: Math.random() * (Math.random() * 10),
@@ -57,9 +57,10 @@ export default function getStock(stock: string, timeWindow: number, socialMedia:
   const days = timeWindow / DAY_IN_MS;
   const stockData = []
   const symbol = AvailableStock.find((s) => s.includes(stock)) || 'AAPL';
-  for (let i = 1; i < days; i++) {
-    const date = new Date(Date.now() - timeWindow - (i * DAY_IN_MS));
+  for (let i = 0; i < days; i++) {
+    const date = new Date(Date.now() - (i * DAY_IN_MS));
     stockData.push(generateRandomStockValue(symbol, date, socialMedia));
   }
+
   return stockData;
 }

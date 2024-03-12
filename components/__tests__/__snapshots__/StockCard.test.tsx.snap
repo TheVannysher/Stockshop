@@ -58,30 +58,54 @@ exports[`renders correctly 1`] = `
       >
         <View
           style={
-            [
-              {
-                "alignItems": "center",
-                "borderRadius": 100,
-                "justifyContent": "center",
-                "padding": 5,
-              },
-              {
-                "backgroundColor": "#2f95dc",
-              },
-            ]
+            {
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+            }
           }
         >
           <Text
             style={
-              {
-                "color": "white",
-                "fontWeight": "bold",
-                "textTransform": "uppercase",
-              }
+              [
+                {
+                  "color": "#000",
+                },
+                {
+                  "fontWeight": "bold",
+                  "paddingVertical": 5,
+                },
+              ]
             }
           >
-            100.00$
+            price: 
           </Text>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "borderRadius": 100,
+                  "justifyContent": "center",
+                  "padding": 5,
+                },
+                {
+                  "backgroundColor": "#2f95dc",
+                },
+              ]
+            }
+          >
+            <Text
+              style={
+                {
+                  "color": "white",
+                  "fontWeight": "bold",
+                  "textTransform": "uppercase",
+                }
+              }
+            >
+              100.00$
+            </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -168,39 +192,6 @@ exports[`renders correctly 1`] = `
           $
         </Text>
       </View>
-      <View
-        style={
-          {
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-          }
-        }
-      >
-        <Text
-          style={
-            [
-              {
-                "color": "#000",
-              },
-              undefined,
-            ]
-          }
-        >
-          date:
-        </Text>
-        <Text
-          style={
-            [
-              {
-                "color": "#000",
-              },
-              undefined,
-            ]
-          }
-        >
-          3/11/2024
-        </Text>
-      </View>
       <Text
         style={
           [
@@ -209,7 +200,7 @@ exports[`renders correctly 1`] = `
             },
             {
               "fontWeight": "bold",
-              "padding": 5,
+              "paddingVertical": 5,
             },
           ]
         }
@@ -253,6 +244,7 @@ exports[`renders correctly 1`] = `
     <View
       style={
         {
+          "alignItems": "center",
           "flexDirection": "row",
           "gap": 5,
           "justifyContent": "space-between",
@@ -262,10 +254,8 @@ exports[`renders correctly 1`] = `
       <View
         style={
           {
-            "alignItems": "center",
             "flexDirection": "row",
-            "gap": 5,
-            "padding": 5,
+            "justifyContent": "space-between",
           }
         }
       >
@@ -279,35 +269,20 @@ exports[`renders correctly 1`] = `
             ]
           }
         >
-          Recommandation:
+          date: 
         </Text>
-        <View
+        <Text
           style={
             [
               {
-                "alignItems": "center",
-                "borderRadius": 100,
-                "justifyContent": "center",
-                "padding": 5,
+                "color": "#000",
               },
-              {
-                "backgroundColor": "#3EC300",
-              },
+              undefined,
             ]
           }
         >
-          <Text
-            style={
-              {
-                "color": "white",
-                "fontWeight": "bold",
-                "textTransform": "uppercase",
-              }
-            }
-          >
-            buy
-          </Text>
-        </View>
+          3/12/2024
+        </Text>
       </View>
     </View>
   </View>
@@ -372,30 +347,54 @@ exports[`renders correctly 2`] = `
       >
         <View
           style={
-            [
-              {
-                "alignItems": "center",
-                "borderRadius": 100,
-                "justifyContent": "center",
-                "padding": 5,
-              },
-              {
-                "backgroundColor": "#2f95dc",
-              },
-            ]
+            {
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+            }
           }
         >
           <Text
             style={
-              {
-                "color": "white",
-                "fontWeight": "bold",
-                "textTransform": "uppercase",
-              }
+              [
+                {
+                  "color": "#000",
+                },
+                {
+                  "fontWeight": "bold",
+                  "paddingVertical": 5,
+                },
+              ]
             }
           >
-            505000.00$
+            price: 
           </Text>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "borderRadius": 100,
+                  "justifyContent": "center",
+                  "padding": 5,
+                },
+                {
+                  "backgroundColor": "#2f95dc",
+                },
+              ]
+            }
+          >
+            <Text
+              style={
+                {
+                  "color": "white",
+                  "fontWeight": "bold",
+                  "textTransform": "uppercase",
+                }
+              }
+            >
+              505000.00$
+            </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -482,39 +481,6 @@ exports[`renders correctly 2`] = `
           $
         </Text>
       </View>
-      <View
-        style={
-          {
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-          }
-        }
-      >
-        <Text
-          style={
-            [
-              {
-                "color": "#000",
-              },
-              undefined,
-            ]
-          }
-        >
-          date:
-        </Text>
-        <Text
-          style={
-            [
-              {
-                "color": "#000",
-              },
-              undefined,
-            ]
-          }
-        >
-          3/11/2024
-        </Text>
-      </View>
       <Text
         style={
           [
@@ -523,7 +489,7 @@ exports[`renders correctly 2`] = `
             },
             {
               "fontWeight": "bold",
-              "padding": 5,
+              "paddingVertical": 5,
             },
           ]
         }
@@ -567,6 +533,7 @@ exports[`renders correctly 2`] = `
     <View
       style={
         {
+          "alignItems": "center",
           "flexDirection": "row",
           "gap": 5,
           "justifyContent": "space-between",
@@ -576,10 +543,8 @@ exports[`renders correctly 2`] = `
       <View
         style={
           {
-            "alignItems": "center",
             "flexDirection": "row",
-            "gap": 5,
-            "padding": 5,
+            "justifyContent": "space-between",
           }
         }
       >
@@ -593,35 +558,20 @@ exports[`renders correctly 2`] = `
             ]
           }
         >
-          Recommandation:
+          date: 
         </Text>
-        <View
+        <Text
           style={
             [
               {
-                "alignItems": "center",
-                "borderRadius": 100,
-                "justifyContent": "center",
-                "padding": 5,
+                "color": "#000",
               },
-              {
-                "backgroundColor": "#3EC300",
-              },
+              undefined,
             ]
           }
         >
-          <Text
-            style={
-              {
-                "color": "white",
-                "fontWeight": "bold",
-                "textTransform": "uppercase",
-              }
-            }
-          >
-            buy
-          </Text>
-        </View>
+          3/12/2024
+        </Text>
       </View>
     </View>
   </View>

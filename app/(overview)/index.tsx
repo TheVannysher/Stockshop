@@ -86,10 +86,12 @@ export default function OverviewSrceen() {
           <>
             {recommandation && (
               <View style={styles.recommendation}>
-                <Text>Recommandation:</Text>
-                {recommandation === 'buy' && <Badge title="buy" color="#3EC300" />}
-                {recommandation === 'sell' && <Badge title="sell" color="#E13700" />}
-                {recommandation === 'hold' && <Badge title="hold" />}
+                <View style={styles.recommendation}>
+                  <Text>Recommandation (today):</Text>
+                  {recommandation === 'buy' && <Badge title="buy" color="#3EC300" />}
+                  {recommandation === 'sell' && <Badge title="sell" color="#E13700" />}
+                  {recommandation === 'hold' && <Badge title="hold" />}
+                </View>
               </View>
             )}
             <Chart data={stocks} />
@@ -138,12 +140,6 @@ const styles = StyleSheet.create({
   },
   stats: {
     flexWrap: 'wrap',
-    justifyContent: 'center',
-    gap: 5,
-  },
-  section: {
-    width: '100%',
-    alignItems: 'center',
     justifyContent: 'center',
     gap: 5,
   },
