@@ -11,6 +11,8 @@ import TimeWindow from '@/constants/timeWindow';
 import SocialMediaContext from '@/lib/contexts/socialMedia';
 import Colors from '@/constants/Colors';
 import { Picker } from '@react-native-picker/picker';
+import Chart from '@/components/chart';
+import Badge from '@/components/badge';
 
 export default function OverviewSrceen() {
   const [error, setError] = useState<string>('');
@@ -22,7 +24,7 @@ export default function OverviewSrceen() {
   const { socials } = useContext(SocialMediaContext);
 
   const onChange = useCallback((input: string) => {
-    const result = getStock(input, new Date(Date.now() + timeWindow), socialMedia);
+    const result = getStock(input, timeWindow, socials);
     if (result) {
       setStocks(result);
       setError('');
@@ -37,8 +39,15 @@ export default function OverviewSrceen() {
     color: Colors[theme].text,
   }), [theme]);
 
+  const recommandation = useMemo(() => {
+    if (stocks.length > 0) {
+      return getRecommended(stocks[0]);
+    }
+    return null;
+  }, [stocks]);
+
   useEffect(() => {
-    const result = getStock('', new Date(Date.now() - timeWindow), socialMedia);
+    const result = getStock('AAPL', TimeWindow.DAY_10.value, socials)
     if (result) setStocks(result);
   }, [timeWindow, socialMedia]);
 
@@ -73,22 +82,31 @@ export default function OverviewSrceen() {
         </View>
       )}
       <>
-        <ScrollView>
-          <View style={styles.stats}>
-            {stocks && stocks.map((stock, index) => (
-              <View key={`${stock.symbol}_${index}`} style={styles.cardWrapper}>
-                <StockCard
-                  symbol={stock.symbol}
-                  buyPrice={stock.buyPrice}
-                  sellPrice={stock.sellPrice}
-                  recommandation={getRecommended(stock)}
-                  date={stock.date}
-                  socials={stock.socialMedia}
-                />
+        {stocks.length > 0 && (
+          <>
+            {recommandation && (
+              <View style={styles.recommendation}>
+                <Text>Recommandation:</Text>
+                {recommandation === 'buy' && <Badge title="buy" color="#3EC300" />}
+                {recommandation === 'sell' && <Badge title="sell" color="#E13700" />}
+                {recommandation === 'hold' && <Badge title="hold" />}
               </View>
-            ))}
-          </View>
-        </ScrollView>
+            )}
+            <Chart data={stocks} />
+            <ScrollView>
+              <View style={styles.stats}>
+                {stocks && stocks.map((stock, index) => (
+                  <View key={`${stock.symbol}_${index}`} style={styles.cardWrapper}>
+                    <StockCard
+                      stock={stock}
+                      socialMediaSelected={socialMedia}
+                    />
+                  </View>
+                ))}
+              </View>
+            </ScrollView>
+          </>
+        )}
       </>
     </View>
   );
@@ -107,6 +125,12 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 5,
     gap: 10,
+  },
+  recommendation: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    padding: 5,
   },
   title: {
     fontSize: 20,
